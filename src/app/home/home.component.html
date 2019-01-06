@@ -7,20 +7,16 @@
         <mat-tab label="Post"> 
             <form class="example-form">
                 <mat-form-field class="example-full-width">
-                  <input matInput placeholder="Name" #name value="" required>
+                  <input matInput placeholder="User" #name value="" required>
                 </mat-form-field>
               
                 <mat-form-field class="example-full-width">
-                  <input matInput #email placeholder="Email">
-                </mat-form-field>
-            
-                <mat-form-field class="example-full-width">
-                    <input matInput #phone placeholder="Number">
+                  <input matInput #email placeholder="Password">
                 </mat-form-field>
             
             </form>
             
-              <button mat-raised-button color="primary" (click)="sendPostRequest(name.value,email.value,phone.value)">POST</button>
+              <button mat-raised-button color="primary" (click)="sendPostRequest(name.value,email.value)">POST</button>
               <br>
               <br>  
         </mat-tab>
@@ -33,7 +29,7 @@
                     </mat-form-field>
                   </form>
                 <button mat-raised-button color="warn" (click)="delete(idd.value)">Borrar</button> - 
-                <button mat-raised-button color="primary" (click)="update(idd.value, nameU.value)">{{da.name}} - {{da.email}} - {{da.phone_number}} Actualizar</button>
+                <button mat-raised-button color="primary" (click)="update(idd.value, nameU.value)">{{da.user}} - {{da.password}} Actualizar</button>
                   
               </div>  
         </mat-tab>

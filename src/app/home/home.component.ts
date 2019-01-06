@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
 
   showSuccessSaved() {
     this.toastr.success('Alerta', 'Datos guardados!');
+    this.datassss();
   }
 
   showSuccessUpdate() {
@@ -32,14 +33,14 @@ export class HomeComponent implements OnInit {
   }
   
   datassss(){
-    this.api = 'http://paunimal.com/angular/api/getdata.php';
+    this.api = 'https://parcu.herokuapp.com';
     this.http.get(this.api)
     .pipe(map(response => response.json()))
-    .subscribe(res => this.myData = res.lost);
+    .subscribe(res => this.myData = res);
     console.log("datas: " + this.myData);
   }
 
-  sendPostRequest(name, email,phone) {
+  sendPostRequest(name, email) {
     var headers = new Headers();
     headers.append('Access-Control-Allow-Headers' , 'Content-Type, Content-Length, Accept-Encoding');
     headers.append('Access-Control-Allow-Origin' , '*');
@@ -49,19 +50,24 @@ export class HomeComponent implements OnInit {
     const requestOptions = new RequestOptions({ headers: headers });
 
     let postData = {
-            "name": name,
-            "email": email,
-            "phone_number": phone
+            "user": name,
+            "password": email,
     }
 
-    this.http.post("http://paunimal.com/angular/api/postdata.php", postData, requestOptions)
+    try {
+      this.http.post("https://parcu.herokuapp.com/pot", postData, requestOptions)
       .subscribe(data => {
-        console.log(data['_body']);
-        this.datassss();
-        this.showSuccessSaved();
+        //console.log(data['_body']);
+        
        }, error => {
         console.log(error);
       });
+      this.datassss();
+      this.showSuccessSaved();
+    } catch (error) {
+      
+    }
+    
       
   }
 
@@ -126,10 +132,10 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.api = 'http://paunimal.com/angular/api/getdata.php';
+    this.api = 'https://parcu.herokuapp.com/';
     this.http.get(this.api)
     .pipe(map(response => response.json()))
-    .subscribe(res => this.myData = res.lost);
+    .subscribe(res => this.myData = res);
     console.log("datas: " + this.myData);
   }
 
