@@ -22,7 +22,7 @@
         </mat-tab>
         <mat-tab label="Get, Update, Delete"> 
             <div *ngFor="let da of myData; let i = index; trackBy: trackByFn">
-                <input type="text" #idd value={{da.id}} hidden>
+                <input type="text" #idd value="{{da._id}}" hidden>
                 <form class="example-form">
                     <mat-form-field class="example-full-width">
                       <input matInput placeholder="Name" #nameU value="">

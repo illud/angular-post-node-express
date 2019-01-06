@@ -30,6 +30,7 @@ export class HomeComponent implements OnInit {
 
   showSuccessDelete() {
     this.toastr.success('Alerta', 'Datos Eliminados!');
+    this.datassss();
   }
   
   datassss(){
@@ -82,17 +83,22 @@ export class HomeComponent implements OnInit {
       const requestOptions = new RequestOptions({ headers: headers });
   
       let postData = {
-              "id": id,
+              "_id": id
       }
   
-      this.http.put("http://paunimal.com/angular/api/deletedata.php", postData, requestOptions)
+      try {
+        this.http.post("https://parcu.herokuapp.com/del", postData)
         .subscribe(data => {
-          console.log(data['_body']);
-          this.datassss();
-          this.showSuccessDelete();
+          
          }, error => {
           console.log(error);
         });
+        this.datassss();
+        this.showSuccessDelete();
+      } catch (error) {
+        
+      }
+
     }else{
 
     }
