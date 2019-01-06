@@ -55,7 +55,7 @@ export class HomeComponent implements OnInit {
     }
 
     try {
-      this.http.post("https://parcu.herokuapp.com/pot", postData, requestOptions)
+      this.http.post("https://parcu.herokuapp.com/pot", postData)
       .subscribe(data => {
         //console.log(data['_body']);
         

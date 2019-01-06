@@ -1,0 +1,7 @@
+{
+    "/datos/*":{
+        "target": "https://parcu.herokuapp.com/",
+        "secure": false,
+        "changeOrigin": true
+    }
+}
